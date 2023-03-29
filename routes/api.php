@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UOMController;
 use App\Http\Controllers\ChargeToController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\InvoiceToController;
+use App\Http\Controllers\CustomerPoNoController;
+use App\Http\Controllers\AssignedVendorController;
+use App\Http\Controllers\CustomerContractController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +45,32 @@ Route::controller(ChargeToController::class)->group(function () {
     Route::put('/chargeto/{id}', 'update');
     Route::delete('/chargeto/{id}', 'destroy');
 });
+
+Route::controller(AssignedVendorController::class)->group(function () {
+    Route::get('/assignedvendor', 'index');
+    Route::post('/assignedvendor', 'store' );
+    Route::put('/assignedvendor/{id}', 'update');
+    Route::delete('/assignedvendor/{id}', 'destroy');
+});
+
+Route::controller(InvoiceToController::class)->group(function () {
+    Route::get('/invoiceto', 'index');
+    Route::post('/invoiceto', 'store' );
+    Route::put('/invoiceto/{id}', 'update');
+    Route::delete('/invoiceto/{id}', 'destroy');
+});
+
+Route::controller(CustomerContractController::class)->group(function () {
+    Route::get('/customercontracts', 'index');
+    Route::post('/customercontracts', 'store' );
+    Route::put('/customercontracts/{id}', 'update');
+    Route::delete('/customercontracts/{id}', 'destroy');
+});
+
+Route::controller(CustomerPoNoController::class)->group(function () {
+    Route::get('/customerpono', 'index');
+    Route::post('/customerpono', 'store' );
+    Route::put('/customerpono/{id}', 'update');
+    Route::delete('/customerpono/{id}', 'destroy');
+});
+

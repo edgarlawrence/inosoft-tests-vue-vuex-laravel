@@ -44,15 +44,14 @@ class ChargeToController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show()
     {
-        return Inertia::render('');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit()
     {
         //
     }

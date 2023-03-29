@@ -9,6 +9,10 @@ const store = new Vuex.Store({
         data: [],
         currency: [],
         chargeTo: [],
+        assignedVendor: [],
+        invoiceTo: [],
+        customerContract: [],
+        customerPoNo: [],
     },
     mutations: {
         setData(state, payload) {
@@ -20,11 +24,17 @@ const store = new Vuex.Store({
         setChargeTo(state, payload) {
             state.chargeTo = payload;
         },
-        increment(state) {
-            state.count++;
+        setAssignedVendor(state, payload) {
+            state.assignedVendor = payload;
         },
-        SET_UOM(state, payload) {
-            state.uom = payload;
+        setInvoiceTo(state, payload) {
+            state.invoiceTo = payload;
+        },
+        setCustomerContract(state, payload) {
+            state.customerContract = payload;
+        },
+        setCustomerPoNo(state, payload) {
+            state.customerPoNo = payload;
         },
     },
     actions: {
@@ -52,7 +62,6 @@ const store = new Vuex.Store({
                         "setCurrency",
                         JSON.parse(JSON.stringify(response))
                     );
-                    console.log("currency", response);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -67,7 +76,62 @@ const store = new Vuex.Store({
                         "setChargeTo",
                         JSON.parse(JSON.stringify(response))
                     );
-                    console.log("currency", response);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        async getAssignedVendor(context) {
+            await axios
+                .get("http://127.0.0.1:8000/api/assignedvendor")
+                .then((res) => {
+                    const response = res.data;
+                    context.commit(
+                        "setAssignedVendor",
+                        JSON.parse(JSON.stringify(response))
+                    );
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        async getInvoiceTo(context) {
+            await axios
+                .get("http://127.0.0.1:8000/api/invoiceto")
+                .then((res) => {
+                    const response = res.data;
+                    context.commit(
+                        "setInvoiceTo",
+                        JSON.parse(JSON.stringify(response))
+                    );
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        async getCustomerContract(context) {
+            await axios
+                .get("http://127.0.0.1:8000/api/customercontracts")
+                .then((res) => {
+                    const response = res.data;
+                    context.commit(
+                        "setCustomerContract",
+                        JSON.parse(JSON.stringify(response))
+                    );
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        async getCustomerPoNo(context) {
+            await axios
+                .get("http://127.0.0.1:8000/api/customerpono")
+                .then((res) => {
+                    const response = res.data;
+                    context.commit(
+                        "setCustomerPoNo",
+                        JSON.parse(JSON.stringify(response))
+                    );
                 })
                 .catch((err) => {
                     console.log(err);
@@ -79,6 +143,10 @@ const store = new Vuex.Store({
         fetchData: (state) => state.data,
         fetchCurrency: (state) => state.currency,
         fetchChargeTo: (state) => state.chargeTo,
+        fetchAssignedVendor: (state) => state.assignedVendor,
+        fetchInvoiceTo: (state) => state.invoiceTo,
+        fetchCustomerContract: (state) => state.customerContract,
+        fetchCustomerPoNo: (state) => state.customerPoNo,
     },
 });
 

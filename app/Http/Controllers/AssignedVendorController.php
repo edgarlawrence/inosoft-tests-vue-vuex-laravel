@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Currency;
 use Illuminate\Http\Request;
+use App\Models\AssignedVendor;
 
-class CurrencyController extends Controller
+class AssignedVendorController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $table =  Currency::latest()->get();
+        $table =  AssignedVendor::latest()->get();
         return response()->json($table);
     }
 
@@ -33,7 +33,7 @@ class CurrencyController extends Controller
             'value' => 'required'
         ]);
 
-        $product = Currency::create([
+        $product = AssignedVendor::create([
             'value' => $request->value,
         ]);       
         return response()->json([
@@ -62,7 +62,7 @@ class CurrencyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Currency::findOrFail($id);
+        $product = AssignedVendor::findOrFail($id);
         $product->value = $request->value;
         return response()->json($products);
     }
@@ -72,7 +72,7 @@ class CurrencyController extends Controller
      */
     public function destroy($id)
     {
-        Currency::destroy($id);
+        AssignedVendor::destroy($id);
         return response()->json([
             'message' => 'Item has been deleted'
         ]);

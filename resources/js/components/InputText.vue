@@ -1,5 +1,6 @@
 <template>
     <div>
+        {{ inputLabel }}
         <input
             v-if="textString === true"
             type="text"
@@ -27,6 +28,7 @@ export default {
         },
         placeholder: String,
         textString: Boolean,
+        inputLabel: String,
     },
 };
 </script>

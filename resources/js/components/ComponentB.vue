@@ -114,13 +114,18 @@
                     </td>
                     <td scope="col">
                         <Selects
+                            optionDisabled="true"
                             v-model="selectedChargeTo"
                             :options-data="loadedChargeTo"
                             @change="handleChargeTo"
                         ></Selects>
                     </td>
                     <td scope="col">
-                        <Buttons buttons="Dropdown" buttonName="..." />
+                        <Buttons
+                            buttons="Dropdown"
+                            buttonName="..."
+                            :items="itemsDropdownTable"
+                        />
                     </td>
                 </tr>
             </tbody>
@@ -219,13 +224,18 @@
                     </td>
                     <td scope="col">
                         <Selects
+                            optionDisabled="true"
                             v-model="selectedChargeTo2"
                             :options-data="loadedChargeTo"
                             @change="handleChargeTo2"
                         ></Selects>
                     </td>
                     <td scope="col">
-                        <Buttons buttons="Dropdown" buttonName="..." />
+                        <Buttons
+                            buttons="Dropdown"
+                            buttonName="..."
+                            :items="itemsDropdownTable"
+                        />
                     </td>
                 </tr>
             </tbody>
@@ -249,16 +259,16 @@
                     <td scope="col"></td>
                     <td scope="col"></td>
                     <td scope="col"></td>
-                    <td scope="col">
-                        <p style="font-size: 10px" class="pt-2">AED in Total</p>
+                    <td scope="col" style="background-color: #f5f6f8">
+                        <p style="font-size: 13px" class="pt-1">AED in Total</p>
                     </td>
-                    <td scope="col">
+                    <td scope="col" style="background-color: #f5f6f8">
                         {{ vatAmountTotal }}
                     </td>
-                    <td scope="col">
+                    <td scope="col" style="background-color: #f5f6f8">
                         {{ subTotalAmount }}
                     </td>
-                    <td scope="col">
+                    <td scope="col" style="background-color: #f5f6f8">
                         {{ totalAmount }}
                     </td>
                     <td scope="col"></td>
@@ -284,16 +294,16 @@
                     <td scope="col"></td>
                     <td scope="col"></td>
                     <td scope="col"></td>
-                    <td scope="col">
-                        <p style="font-size: 10px" class="pt-2">USD in Total</p>
+                    <td scope="col" style="background-color: #f5f6f8">
+                        <p style="font-size: 13px" class="pt-1">USD in Total</p>
                     </td>
-                    <td scope="col">
+                    <td scope="col" style="background-color: #f5f6f8">
                         {{ vatAmountTotal }}
                     </td>
-                    <td scope="col">
+                    <td scope="col" style="background-color: #f5f6f8">
                         {{ subTotalAmount }}
                     </td>
-                    <td scope="col">
+                    <td scope="col" style="background-color: #f5f6f8">
                         {{ totalAmount }}
                     </td>
                     <td scope="col"></td>
@@ -308,6 +318,8 @@ import InputText from "./InputText.vue";
 import InputTextView from "./InputTextView.vue";
 import Selects from "./Selects.vue";
 import Buttons from "./Buttons.vue";
+import { mapState, mapActions } from "vuex";
+import axios from "axios";
 
 export default {
     name: "ComponentB",
@@ -344,6 +356,7 @@ export default {
                 { id: 1, value: "Cost Detail" },
                 { id: 2, value: "Shipping Detail" },
             ],
+            itemsDropdownTable: [{ id: 1, value: "Delete" }],
         };
     },
     methods: {

@@ -1,10 +1,12 @@
 <template>
     <div class="custom-select">
+        {{ selectLabel }}
         <select
-            class="form-control"
+            class="form-control form-select"
             v-model="selectedOption"
             @change="$emit('change', selectedOption)"
         >
+            <option v-if="optionDisabled">Select an Option</option>
             <option
                 class="form-control"
                 v-for="option in options"
@@ -28,6 +30,8 @@ export default {
             type: String,
             required: false,
         },
+        selectLabel: String,
+        optionDisabled: true,
     },
     data() {
         return {

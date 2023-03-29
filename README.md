@@ -8,5 +8,15 @@ How to clone and install an laravel vue project:
 -   Run php artisan key:generate
 -   Run php artisan migrate
 -   Run npm install && npm run dev
+-   Run php artisan db:seed --class=AssignedVendorSeeder
+-   Run php artisan db:seed --class=ChargeToSeeder
+-   Run php artisan db:seed --class=CurrencySeeder
+-   Run php artisan db:seed --class=CustomerContractSeeder
+-   Run php artisan db:seed --class=CustomerPoNoSeeder
+-   Run php artisan db:seed --class=InvoiceSeeder
+-   Run php artisan db:seed --class=UomSeeder
 -   Run php artisan serve
 -   Run npm run watch
+
+Note: I've added Backend Controller and you can check it at this directory address:
+\routes\api.php

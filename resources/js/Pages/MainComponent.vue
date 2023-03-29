@@ -1,5 +1,6 @@
 <template lang="">
     <div>
+        <componenta-component> </componenta-component>
         <componentb-component> </componentb-component>
         <div class="d-flex justify-content-end">
             <Buttons buttons="Cancel" buttonName="Cancel"> </Buttons>
